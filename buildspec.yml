@@ -20,6 +20,7 @@ phases:
   post_build:
     commands:
       - docker push "${REPO}:${TAG}"
+      - printf '{"Image":"%s:%s"}' $REPO $TAG > build.json
 artifacts:
-  files:
+  files: build.json
   discard-paths: yes
