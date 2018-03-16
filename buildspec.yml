@@ -2,8 +2,8 @@ version: 0.2
 
 env:
   variables:
-    IMG:"app"
-    REPO:"184665364105.dkr.ecr.us-east-1.amazonaws.com/app:"
+    IMG: "app"
+    REPO: "184665364105.dkr.ecr.us-east-1.amazonaws.com/app:"
   parameter-store:       
 phases:
   install:
