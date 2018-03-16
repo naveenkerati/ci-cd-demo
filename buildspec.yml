@@ -6,13 +6,11 @@ env:
     REPO: "184665364105.dkr.ecr.us-east-1.amazonaws.com/app:"
   parameter-store:       
 phases:
-  install:
+  pre_build:
     commands:
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --region us-east-1)
-      - TAG="$(echo CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
-  pre_build:
-    commands:
+      - TAG = "$(echo CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
   build:
     commands:
       - docker build -tag "${IMG}:${TAG}"
