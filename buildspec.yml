@@ -2,7 +2,8 @@ version: 0.2
 env:
   variables:
     IMG: "app"
-    REPO: "184665364105.dkr.ecr.us-east-1.amazonaws.com/app"      
+    REPO: "184665364105.dkr.ecr.us-east-1.amazonaws.com/app" 
+    TAG: $(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)     
 phases:
   pre_build:
     commands:
@@ -10,8 +11,8 @@ phases:
       - aws ecr get-login --region us-east-1
   build:
     commands:
-      - TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)
       - echo $TAG
+      - echo $IMG
       - ls -l
       - docker build -t $IMG:$TAG .
       - docker tag $IMG:$TAG $REPO:$TAG 
