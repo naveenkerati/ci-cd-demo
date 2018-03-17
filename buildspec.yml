@@ -11,6 +11,8 @@ phases:
       - TAG=echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8
   build:
     commands:
+      - echo $TAG
+      - ls -l
       - docker build -t $IMG:$TAG .
       - docker tag $IMG:$TAG $REPO:$TAG 
   post_build:
