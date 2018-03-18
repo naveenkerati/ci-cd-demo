@@ -12,7 +12,6 @@ phases:
       - aws ecr get-login --region us-east-1
   build:
     commands:
-      - ls -l
       - docker build --tag $REPO:$TAG .
   post_build:
     commands:
