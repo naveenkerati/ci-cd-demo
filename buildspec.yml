@@ -13,10 +13,10 @@ phases:
   build:
     commands:
       - ls -l
-      - docker build --tag "${REPO}:${TAG}" .
+      - docker build --tag $REPO:$TAG .
   post_build:
     commands:
-      - docker push "${REPO}:${TAG}"
+      - docker push $REPO:$TAG
       - printf '{"Image":"%s:%s"}'' $REPO $TAG > build.json
 artifacts:
   files: build.json
