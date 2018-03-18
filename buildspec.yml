@@ -6,7 +6,7 @@ phases:
   pre_build:
     commands:
       - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
-      - TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
+      - TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)
       - echo Logging in to Amazon ECR...
       - aws ecr get-login --region us-east-1
   build:
