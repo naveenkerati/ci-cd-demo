@@ -14,7 +14,7 @@ phases:
     commands:
       - echo $TAG
       - echo $REPO
-      - docker build --tag $REPO:$TAG .
+      - docker build --tag $REPO:$TAG $REPO:latest.
   post_build:
     commands:
       - docker push $REPO:$TAG
