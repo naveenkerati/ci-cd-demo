@@ -18,7 +18,6 @@ phases:
   post_build:
     commands:
       - docker push $REPO:$TAG
-      - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPO:$TAG > imagedefinitions.json
+      - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPO:$TAG > ./cfg/task-definition.json
 artifacts:
-  files: build.json
-  discard-paths: yes
+  files: task-definition.json
