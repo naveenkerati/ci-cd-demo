@@ -14,11 +14,10 @@ phases:
     commands:
       - echo $TAG
       - echo $REPO
-      - docker build --tag $REPO:$TAG $REPO:latest .
+      - docker build --tag $REPO:$TAG .
   post_build:
     commands:
       - docker push $REPO:$TAG
-      - docker push $REPO:latest
       - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPO:$TAG > imagedefinitions.json
 artifacts:
   files: build.json
