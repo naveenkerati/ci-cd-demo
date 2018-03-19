@@ -18,6 +18,6 @@ phases:
   post_build:
     commands:
       - docker push $REPO:$TAG
-      - printf '[{"name":"app","imageUri":"%s"}]' $REPO:$TAG > imagedefinitions.json
+      - printf '[{"name":"express","imageUri":"%s"}]' $REPO:$TAG > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
