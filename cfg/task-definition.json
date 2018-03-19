@@ -1,0 +1,20 @@
+{
+    "taskDefinition": {
+      "family": "demo-node",
+      "containerDefinitions": [
+        {
+          "name": "node",
+          "image": "184665364105.dkr.ecr.us-east-1.amazonaws.com/app:6d614b03", 
+          "portMappings": [
+            {
+              "protocol": "tcp",
+              "containerPort": 3000,
+              "hostPort": 3000
+            }
+          ],
+          "memory": 250,
+          "essential": true
+        }
+      ]
+    }
+  }

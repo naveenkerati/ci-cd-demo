@@ -5,8 +5,9 @@ env:
 phases:
   pre_build:
     commands:
-      - echo $CODEBUILD_SOURCE_VERSION
-      - TAG=$(echo $CODEBUILD_SOURCE_VERSION | head -c 8)
+      - printenv
+      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
+      - TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --no-include-email --region us-east-1)
   build:
@@ -17,7 +18,8 @@ phases:
   post_build:
     commands:
       - docker push $REPO:$TAG
-      - printf '{"Image":"%s:%s"}'' $REPO $TAG > build.json
+      - docker push $REPO:latest
+      - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPO:$TAG > imagedefinitions.json
 artifacts:
   files: build.json
   discard-paths: yes
