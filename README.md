@@ -12,5 +12,8 @@ This Repo is a sample demo for continous Deployment of docker image in AWS ECS. 
 
 * In Build Phase *AWS CodepBuild* will compile the code, run unit tests and integration tests,build the docker image and pushes the image to *AWS ECR* and produces artifacts that are ready to deploy.
 
+### **Architecture Diagram:**
+![architecture](https://github.com/naveenkerati/ci-cd-demo/blob/master/images/architec.png)
+
 
 
