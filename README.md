@@ -16,4 +16,4 @@ This Repo is a sample demo for continous Deployment of docker image in AWS ECS. 
 ![architecture](https://github.com/naveenkerati/ci-cd-demo/blob/master/images/architec.png)
 
 
-
+Please find the wiki for instructions to run pipeline
